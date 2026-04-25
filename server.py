@@ -3,7 +3,7 @@ from fastmcp import FastMCP, Context
 from codeqlclient import CodeQLQueryServer
 from pathlib import Path
 
-mcp = FastMCP("CodeQL", version="1.0.0", enable_sse=True)
+mcp = FastMCP("CodeQL", version="1.0.0")
 qs = CodeQLQueryServer()
 qs.start()
 
@@ -100,4 +100,4 @@ async def find_predicate_position(file: str, name: str) -> dict:
 
 if __name__ == "__main__":
     print("Starting CodeQL MCP server...")
-    mcp.run(host="0.0.0.0", port=8000)
+    mcp.run(host="0.0.0.0", port=8000, transport="sse")

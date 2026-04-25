@@ -9,8 +9,8 @@ from pathlib import Path
 
 
 class CodeQLQueryServer:
-    def __init__(self, codeql_path="codeql"):
-        self.codeql_path = codeql_path
+    def __init__(self, codeql_path=None):
+        self.codeql_path = codeql_path or os.environ.get("CODEQL_PATH", "codeql")
         self.proc = None
         self.reader_thread = None
         self.pending = {}
